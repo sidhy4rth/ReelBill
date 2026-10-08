@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <ellipse cx="120" cy="226" rx="56" ry="7" fill="#111111" opacity="0.15"></ellipse>
+  <g fill="#FFFFFF" stroke="#FFFFFF" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M86 18 H154 Q170 18 170 34 V192 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 V34 Q70 18 86 18 Z" stroke-width="16"></path>
+  </g>
+  <path d="M100 200 V216 M140 200 V216" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <ellipse cx="96" cy="219" rx="13" ry="7" fill="#111111"></ellipse>
+  <ellipse cx="144" cy="219" rx="13" ry="7" fill="#111111"></ellipse>
+  <path d="M86 18 H154 Q170 18 170 34 V192 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 V34 Q70 18 86 18 Z" fill="#FFFFFF" stroke="#111111" stroke-width="6" stroke-linejoin="round"></path>
+  <circle cx="104" cy="56" r="11" fill="#FFFFFF" stroke="#111111" stroke-width="4"></circle>
+  <circle cx="136" cy="56" r="11" fill="#FFFFFF" stroke="#111111" stroke-width="4"></circle>
+  <circle cx="109" cy="58" r="5" fill="#111111"></circle>
+  <circle cx="141" cy="58" r="5" fill="#111111"></circle>
+  <path d="M92 52 h24 M124 52 h24" stroke="#111111" stroke-width="5" stroke-linecap="round"></path>
+  <path d="M124 36 q10 -7 24 -2" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="round"></path>
+  <path d="M108 80 q6 -4 12 0 q6 4 12 0" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"></path>
+  <path d="M82 98 l6 4 l-6 4 Z M82 112 l6 4 l-6 4 Z M82 126 l6 4 l-6 4 Z M82 140 l6 4 l-6 4 Z M82 154 l6 4 l-6 4 Z" fill="#FF4FA3"></path>
+  <path d="M94 102 h52 M94 116 h44 M94 130 h50 M94 144 h40 M94 158 h48" stroke="#111111" stroke-width="3" stroke-linecap="round" opacity="0.45"></path>
+  <path d="M82 168 H158" stroke="#111111" stroke-width="2" stroke-dasharray="4 4" opacity="0.4"></path>
+  <text x="82" y="186" font-family="Fredoka" font-weight="700" font-size="12" fill="#111111">TOTAL</text>
+  <text x="158" y="187" text-anchor="end" font-family="Fredoka" font-weight="700" font-size="22" fill="#E0157A"><tspan class="billy-total">0</tspan></text>
+  <path d="M70 100 Q54 110 62 128" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"></path>
+  <path d="M70 100 Q54 110 62 128" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <path d="M170 120 Q196 128 192 150" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"></path>
+  <path d="M170 120 Q196 128 192 150" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <path d="M200 140 L166 180" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"></path>
+  <path d="M200 140 L166 180" stroke="#111111" stroke-width="7" stroke-linecap="round"></path>
+  <path d="M200 140 L192 149" stroke="#C6F432" stroke-width="7" stroke-linecap="round"></path>
+  <circle cx="192" cy="150" r="7" fill="#111111"></circle>
+  <path d="M54 28 C61 40 63 47 54 52 C45 47 47 40 54 28 Z" fill="#C6F432" stroke="#111111" stroke-width="3"></path>
+</svg>

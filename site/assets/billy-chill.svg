@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <ellipse cx="120" cy="214" rx="56" ry="8" fill="#111111" opacity="0.18"></ellipse>
+  <g fill="#FFFFFF" stroke="#FFFFFF" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M86 40 H154 Q170 40 170 56 V170 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 V56 Q70 40 86 40 Z" stroke-width="16"></path>
+  <path d="M100 178 V200 M140 178 V200" fill="none" stroke-width="20"></path>
+  <ellipse cx="96" cy="204" rx="13" ry="8" stroke-width="14"></ellipse>
+  <ellipse cx="144" cy="204" rx="13" ry="8" stroke-width="14"></ellipse>
+  <path d="M70 104 Q50 94 46 68" fill="none" stroke-width="18"></path>
+  <path d="M170 110 Q186 116 190 124" fill="none" stroke-width="18"></path>
+  </g>
+  <path d="M100 178 V200 M140 178 V200" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <ellipse cx="96" cy="204" rx="13" ry="8" fill="#111111"></ellipse>
+  <ellipse cx="144" cy="204" rx="13" ry="8" fill="#111111"></ellipse>
+  <path d="M86 40 H154 Q170 40 170 56 V170 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 V56 Q70 40 86 40 Z" fill="#FFFFFF" stroke="#111111" stroke-width="6" stroke-linejoin="round"></path>
+  <path d="M94 80 q10 -12 20 0 M126 80 q10 -12 20 0" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="round"></path>
+  <ellipse cx="92" cy="98" rx="8" ry="5" fill="#FF4FA3"></ellipse>
+  <ellipse cx="148" cy="98" rx="8" ry="5" fill="#FF4FA3"></ellipse>
+  <path d="M108 94 Q120 110 132 94 Z" fill="#111111" stroke="#111111" stroke-width="3" stroke-linejoin="round"></path>
+  <text x="84" y="128" font-family="Fredoka" font-weight="700" font-size="11" fill="#111111" opacity="0.55">TODAY</text>
+  <path d="M84 138 H156" stroke="#111111" stroke-width="2" stroke-dasharray="4 4" opacity="0.4"></path>
+  <text x="84" y="160" font-family="Fredoka" font-weight="700" font-size="12" fill="#111111">TOTAL</text>
+  <text x="156" y="161" text-anchor="end" font-family="Fredoka" font-weight="700" font-size="22" fill="#E0157A"><tspan class="billy-total">0</tspan></text>
+  <path d="M70 104 Q50 94 46 68" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <circle cx="46" cy="64" r="7" fill="#111111"></circle>
+  <path d="M170 110 Q186 116 190 124" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <path d="M180 112 L212 112 L208 146 L184 146 Z" fill="#FFFFFF" stroke="#111111" stroke-width="4" stroke-linejoin="round"></path>
+  <rect x="182" y="122" width="28" height="10" fill="#FF4FA3" stroke="#111111" stroke-width="3"></rect>
+  <path d="M190 104 q-4 -6 0 -12 M202 104 q-4 -6 0 -12" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"></path>
+  <path d="M40 120 Q41 128 49 130 Q41 132 40 140 Q39 132 31 130 Q39 128 40 120 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linejoin="round"></path>
+  <path d="M200 40 Q201.5 47.5 209 49 Q201.5 50.5 200 58 Q198.5 50.5 191 49 Q198.5 47.5 200 40 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linejoin="round"></path>
+</svg>

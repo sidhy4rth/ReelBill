@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <ellipse cx="140" cy="232" rx="90" ry="6" fill="#111111" opacity="0.2"></ellipse>
+  <path d="M78 190 Q74 222 104 222 H226 l-6 6 l6 6 H100 Q64 232 66 190 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path>
+  <path d="M78 190 Q74 222 104 222 H226 l-6 6 l6 6 H100 Q64 232 66 190 Z" fill="#FFFFFF" stroke="#111111" stroke-width="4" stroke-linejoin="round"></path>
+  <path d="M116 228 h14 M140 228 h10 M160 228 h14 M184 228 h12 M204 228 h8" stroke="#111111" stroke-width="2.5" stroke-linecap="round" opacity="0.5"></path>
+  <path d="M84 10 H156 Q172 10 172 26 V196 H68 V26 Q68 10 84 10 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"></path>
+  <path d="M70 92 Q46 84 40 56" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"></path>
+  <path d="M170 92 Q194 84 200 56" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"></path>
+  <path d="M84 10 H156 Q172 10 172 26 V196 H68 V26 Q68 10 84 10 Z" fill="#FFFFFF" stroke="#111111" stroke-width="6" stroke-linejoin="round"></path>
+  <path d="M90 34 l14 6 M150 34 l-14 6" stroke="#111111" stroke-width="5" stroke-linecap="round"></path>
+  <circle cx="104" cy="54" r="13" fill="#FFFFFF" stroke="#111111" stroke-width="4"></circle>
+  <circle cx="136" cy="54" r="13" fill="#FFFFFF" stroke="#111111" stroke-width="4"></circle>
+  <circle cx="104" cy="55" r="3.5" fill="#111111"></circle>
+  <circle cx="136" cy="55" r="3.5" fill="#111111"></circle>
+  <ellipse cx="120" cy="86" rx="11" ry="13" fill="#111111"></ellipse>
+  <ellipse cx="120" cy="93" rx="6" ry="4" fill="#E0157A"></ellipse>
+  <path d="M84 112 h56 M84 124 h48 M84 136 h52 M84 148 h44" stroke="#111111" stroke-width="3" stroke-linecap="round" opacity="0.45"></path>
+  <text x="84" y="180" font-family="Fredoka" font-weight="700" font-size="12" fill="#111111">TOTAL</text>
+  <text x="158" y="181" text-anchor="end" font-family="Fredoka" font-weight="700" font-size="22" fill="#E0157A"><tspan class="billy-total">0</tspan></text>
+  <ellipse cx="139" cy="174" rx="25" ry="15" fill="none" stroke="#111111" stroke-width="3" transform="rotate(-6 139 174)"></ellipse>
+  <g transform="rotate(-14 150 132)">
+  <rect x="112" y="118" width="80" height="28" rx="6" fill="#C6F432" stroke="#111111" stroke-width="3.5"></rect>
+  <text x="152" y="138" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="15" fill="#111111">OVERDUE</text>
+  </g>
+  <path d="M70 92 Q46 84 40 56" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <path d="M170 92 Q194 84 200 56" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"></path>
+  <circle cx="40" cy="52" r="7" fill="#111111"></circle>
+  <circle cx="200" cy="52" r="7" fill="#111111"></circle>
+  <path d="M30 96 C37 108 39 115 30 120 C21 115 23 108 30 96 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3"></path>
+  <path d="M212 90 C217 98 218 103 212 106 C206 103 207 98 212 90 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3"></path>
+  <path d="M24 30 l10 6 M30 16 l4 10 M210 22 l-8 8" stroke="#111111" stroke-width="4" stroke-linecap="round"></path>
+</svg>

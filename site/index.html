@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReelBill · 100 reels. Then the bill comes.</title>
+  <meta name="description" content="ReelBill counts every reel and short you swipe, floats the number over your feed, and lets Billy the receipt do the guilt-tripping. Android.">
+  <meta property="og:title" content="ReelBill">
+  <meta property="og:description" content="100 reels. Then the bill comes.">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- The page bills you too: one "reel" per screenful scrolled. -->
+  <button class="meter" id="meter" type="button" aria-label="Reels you've scrolled on this page">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <path class="meter-tail" d="M22 96 L10 116 L40 104 Z"/>
+      <circle class="meter-body" cx="62" cy="56" r="52"/>
+      <circle class="meter-track" cx="62" cy="56" r="42"/>
+      <circle class="meter-ring" cx="62" cy="56" r="42"/>
+    </svg>
+    <span class="meter-count" id="meterCount">0</span>
+    <span class="meter-tip" id="meterTip">That's you. 1 screen = 1 reel.</span>
+  </button>
+
+  <header class="nav">
+    <a class="wordmark" href="#top" aria-label="ReelBill home">reel<span>bill</span></a>
+    <nav aria-label="Sections">
+      <a href="#billy">Billy</a>
+      <a href="#receipt">Features</a>
+      <a href="#friends">Friends</a>
+      <a class="nav-cta" href="#download">Get it</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- 1 · Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow mono">For Android · Instagram Reels · YouTube Shorts</p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="line line-1" aria-label="100 reels.">100 reels.</span>
+          <span class="line line-2" aria-label="Then the bill comes.">Then the bill comes.</span>
+        </h1>
+        <p class="hero-sub">ReelBill counts every reel you swipe, floats the number over your feed, and when you hit your limit, Billy the receipt hands you the bill.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lime magnetic" href="#download">Download for Android</a>
+          <a class="btn btn-ghost" href="#billy">Meet Billy</a>
+        </div>
+      </div>
+
+      <div class="hero-stage" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="reels" id="heroReels"></div>
+            <div class="phone-bubble" id="heroBubble">
+              <svg viewBox="0 0 120 120">
+                <path class="pb-tail" d="M22 96 L10 116 L40 104 Z"/>
+                <circle class="pb-body" cx="62" cy="56" r="52"/>
+                <circle class="pb-track" cx="62" cy="56" r="42"/>
+                <circle class="pb-ring" cx="62" cy="56" r="42"/>
+              </svg>
+              <span id="heroCount">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-billy" data-svg="assets/billy-chill.svg" data-total="12" aria-hidden="true"></div>
+        <div class="sticker sticker-a mono">−1 attention span</div>
+        <div class="sticker sticker-b mono">swipe №<span id="heroSwipe">0</span></div>
+      </div>
+    </section>
+
+    <!-- 2 · Ticker -->
+    <section class="tickers" aria-label="Things Billy says">
+      <div class="ticker ticker-lime"><div class="ticker-track mono" data-text="TINY BILL. LOVE THAT FOR YOU. ✶ I'M RUNNING OUT OF PAPER HERE. ✶ WHO'S PAYING FOR ALL THIS?! ✶ NEW DAY. CLEAN BILL. ✶ "></div></div>
+      <div class="ticker ticker-pink"><div class="ticker-track mono" data-text="SWIPE ✶ SWIPE ✶ SWIPE ✶ SWIPE ✶ ONE MORE ✶ SWIPE ✶ JUST ONE MORE ✶ "></div></div>
+    </section>
+
+    <!-- 3 · Billy, scroll-driven -->
+    <section class="billy-scene" id="billy" aria-labelledby="billy-title">
+      <div class="billy-pin">
+        <div class="billy-steps">
+          <p class="eyebrow mono">Meet Billy</p>
+          <h2 id="billy-title" class="section-title">Your daily receipt.<br>With feelings.</h2>
+          <ol class="steps">
+            <li class="step is-on"><b>Day 1, he just watches.</b> Scroll like you normally do. No limits, no nagging. Tomorrow you get an honest number.</li>
+            <li class="step"><b>Then he starts printing.</b> Every reel is a line on the receipt. The longer the day, the longer Billy gets.</li>
+            <li class="step"><b>Around 75, the side-eye.</b> He's doing the maths. You can feel it.</li>
+            <li class="step"><b>At 100, the bill comes.</b> Stamped. Overdue. In front of everyone.</li>
+          </ol>
+        </div>
+        <div class="billy-stage">
+          <div class="billy-count mono"><span id="sceneCount">0</span><small>/100 reels</small></div>
+          <div class="billy-poses" id="billyPoses">
+            <div class="tape" aria-hidden="true"><div class="tape-paper" id="tape"></div></div>
+            <div class="pose pose-chill is-on" data-svg="assets/billy-chill.svg"></div>
+            <div class="pose pose-sus" data-svg="assets/billy-sus.svg"></div>
+            <div class="pose pose-over" data-svg="assets/billy-over.svg"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · The bubble -->
+    <section class="bubble-section" aria-labelledby="bubble-title">
+      <div class="bubble-copy">
+        <p class="eyebrow mono">The bubble</p>
+        <h2 id="bubble-title" class="section-title">It sits on top<br>of every reel.</h2>
+        <p class="body">A small pink bubble floats over Instagram and Shorts and ticks up with every swipe. The ring fills toward your limit. Hit it and the bubble goes black.</p>
+        <p class="hint mono">↳ Go on, drag it. Let go near an edge.</p>
+      </div>
+      <div class="arena" id="arena">
+        <div class="arena-feed" aria-hidden="true">
+          <div class="feed-card"></div><div class="feed-card"></div><div class="feed-card"></div>
+        </div>
+        <button class="drag-bubble" id="dragBubble" type="button" aria-label="A ReelBill bubble you can drag">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M22 96 L10 116 L40 104 Z"/>
+            <circle cx="62" cy="56" r="52"/>
+            <circle class="db-ring" cx="62" cy="56" r="42"/>
+          </svg>
+          <span id="dragCount">42</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5 · Features, as a receipt -->
+    <section class="receipt-section" id="receipt" aria-labelledby="receipt-title">
+      <h2 id="receipt-title" class="section-title center">Everything's on the receipt.</h2>
+      <div class="receipt mono" id="featureReceipt">
+        <div class="r-head">
+          <div class="r-store">REELBILL</div>
+          <div>STORE №0001 · YOUR PHONE</div>
+          <div class="r-date" id="receiptDate">—</div>
+        </div>
+        <div class="r-rule"></div>
+        <ul class="r-items">
+          <li><span class="r-name">FLOATING COUNTER</span><span class="r-dots"></span><span class="r-price">ALWAYS ON</span><p>The bubble over every reel. Drag it, or hold it to hide it for half an hour.</p></li>
+          <li><span class="r-name">DAY 1 BILL</span><span class="r-dots"></span><span class="r-price">24 HRS</span><p>A day of honest measuring, then a first limit about 20% under it.</p></li>
+          <li><span class="r-name">KICK ME OUT</span><span class="r-dots"></span><span class="r-price">OPT-IN</span><p>At your limit Billy covers the reels. Close the app, or take five more.</p></li>
+          <li><span class="r-name">STUDY LOCK</span><span class="r-dots"></span><span class="r-price">30M–MIDNIGHT</span><p>No reels till the exam's done. Open Reels anyway and Billy's at the door.</p></li>
+          <li><span class="r-name">TIME IN REELS</span><span class="r-dots"></span><span class="r-price">MEASURED</span><p>Not just how many. How long, too.</p></li>
+          <li><span class="r-name">STREAKS + TRENDS</span><span class="r-dots"></span><span class="r-price">DAILY</span><p>Days under your limit, this week vs last, and the hour you scroll most.</p></li>
+          <li><span class="r-name">MORNING BILL</span><span class="r-dots"></span><span class="r-price">9:00 AM</span><p>Yesterday's total, before you've even opened Instagram.</p></li>
+          <li><span class="r-name">SHARE YOUR BILL</span><span class="r-dots"></span><span class="r-price">1 TAP</span><p>Today's receipt as an image, for the story or the group chat.</p></li>
+          <li><span class="r-name">WIDGET + QS TILE</span><span class="r-dots"></span><span class="r-price">HOME SCREEN</span><p>Billy on your home screen. One tap from Quick Settings locks reels.</p></li>
+          <li><span class="r-name">CLOUD BACKUP</span><span class="r-dots"></span><span class="r-price">NEW PHONE OK</span><p>Your streak survives a reinstall.</p></li>
+        </ul>
+        <div class="r-rule"></div>
+        <div class="r-total"><span>TOTAL</span><span>YOUR TIME BACK</span></div>
+        <div class="r-barcode" aria-hidden="true"></div>
+        <div class="r-foot">THANK YOU. COME BACK LESS.</div>
+      </div>
+    </section>
+
+    <!-- 6 · Kick-out takeover -->
+    <section class="kick" id="kick" aria-labelledby="kick-title">
+      <div class="kick-inner">
+        <div class="kick-billy" data-svg="assets/billy-over.svg" data-total="100" role="img" aria-label="Billy the receipt, stamped overdue"></div>
+        <h2 id="kick-title" class="kick-title">That's the bill.</h2>
+        <p class="kick-sub">This is what limit day looks like with <b>Kick me out</b> switched on.</p>
+        <div class="kick-actions">
+          <button class="btn btn-lime" id="kickClose" type="button">Close this tab</button>
+          <button class="btn btn-text" id="kickMore" type="button">5 more reels</button>
+        </div>
+        <p class="kick-note mono" id="kickNote" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- 7 · Friends -->
+    <section class="friends" id="friends" aria-labelledby="friends-title">
+      <div class="friends-copy">
+        <p class="eyebrow mono">Friends</p>
+        <h2 id="friends-title" class="section-title">Fewest reels<br>wins the week.</h2>
+        <p class="body">Add friends by @username. Once they accept, you're on each other's leaderboard. They see your weekly total and streak. Never what you watched.</p>
+      </div>
+      <div class="board" aria-label="Example leaderboard">
+        <div class="board-head mono">THIS WEEK · FEWEST REELS WINS</div>
+        <ol class="board-rows" id="board"></ol>
+      </div>
+    </section>
+
+    <!-- 8 · Privacy -->
+    <section class="privacy" aria-label="Privacy">
+      <p class="big"><span class="roll" data-to="4">0</span> apps watched.</p>
+      <p class="big pink"><span class="roll" data-to="0" data-from="99">99</span> messages read.</p>
+      <p class="body center">ReelBill only looks at Instagram, YouTube, Moj and Josh, and only counts swipes. It never reads what you type or who you talk to.</p>
+    </section>
+
+    <!-- 9 · Your bill for this page -->
+    <section class="final" id="download" aria-labelledby="final-title">
+      <div class="final-grid">
+        <div class="receipt receipt-small mono" aria-live="polite">
+          <div class="r-head"><div class="r-store">YOUR BILL</div><div>FOR READING THIS PAGE</div></div>
+          <div class="r-rule"></div>
+          <div class="r-row"><span>REELS SCROLLED</span><b id="billReels">0</b></div>
+          <div class="r-row"><span>TIME ON PAGE</span><b id="billTime">0s</b></div>
+          <div class="r-row"><span>BILLY'S VERDICT</span></div>
+          <p class="verdict" id="billVerdict">Still counting.</p>
+          <div class="r-rule"></div>
+          <div class="r-foot">NO REELS WERE HARMED.</div>
+        </div>
+        <div class="final-copy">
+          <h2 id="final-title" class="section-title">Get your<br>first bill.</h2>
+          <p class="body">Free. Android 8 and up. Install it, scroll like normal for a day, and Billy does the rest.</p>
+          <a class="btn btn-lime btn-big magnetic" href="ReelBill-0.3.0.apk" download>Download for Android</a>
+          <p class="small mono">APK · sideload · you'll allow "restricted settings" once. The app walks you through it.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a class="wordmark" href="#top">reel<span>bill</span></a>
+    <p class="mono">Made by sidhy4rth · Android only · Not affiliated with Instagram or YouTube.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

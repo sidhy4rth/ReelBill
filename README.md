@@ -97,6 +97,7 @@ count, and a mascot who gets more dramatic the longer the day goes.
 </p>
 
 [reelbill-app.vercel.app](https://reelbill-app.vercel.app) bills *you* for scrolling it.
+Its source is in [`site/`](site): plain HTML, CSS and JavaScript with GSAP.
 A bubble counts every screenful as a reel; a pinned scene lets your scroll drive Billy
 from 0 to 104; the features print out of a receipt printer; and at the bottom you get
 your own receipt for reading the page.
@@ -110,7 +111,8 @@ and only after you've both accepted. Details in [How it works](docs/HOW-IT-WORKS
 
 ## How it works
 
-The app's source is private. [docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md) explains the
+The app's source is private (the website's is in [`site/`](site)).
+[docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md) explains the
 moving parts: how a swipe becomes a count, how the bubble draws over other apps without
 the "display over other apps" permission, how Billy's moods are decided, and how the
 friends handshake and security rules keep each person's data their own.
