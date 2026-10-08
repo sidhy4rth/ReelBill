@@ -1,0 +1,46 @@
+name: Android
+
+# Builds and tests the real app on every push. The source lives in a private repository;
+# this workflow checks it out with a read-only deploy key, so the badge reflects the
+# actual code without publishing it.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build, test and lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the private source
+        uses: actions/checkout@v4
+        with:
+          repository: sidhy4rth/ReelBill-source
+          ssh-key: ${{ secrets.SOURCE_DEPLOY_KEY }}
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Provide Firebase config template
+        run: cp app/google-services.json.example app/google-services.json
+
+      - name: Assemble debug APK
+        run: ./gradlew :app:assembleDebug
+
+      - name: Unit tests
+        run: ./gradlew :app:testDebugUnitTest
+
+      - name: Lint
+        run: ./gradlew :app:lintDebug
