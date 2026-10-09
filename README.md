@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml/badge.svg" alt="Android CI"></a>
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml/badge.svg" alt="Security rules CI"></a>
-  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.5.0-C6F432?labelColor=111111" alt="Release 0.5.0"></a>
+  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-1.0.0-C6F432?labelColor=111111" alt="Release 1.0.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/source-private-FF4FA3?labelColor=111111" alt="Source is private"></a>
 </p>
 
@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://reelbill-app.vercel.app">Website</a> ·
-  <a href="https://reelbill-app.vercel.app/ReelBill-0.5.0.apk">Android 0.5.0</a> ·
+  <a href="https://github.com/sidhy4rth/ReelBill/releases/latest">Android 1.0.0</a> ·
   <a href="docs/HOW-IT-WORKS.md">How it works</a>
 </p>
 
@@ -80,6 +80,7 @@ count, and a mascot who gets more dramatic the longer the day goes.
 | **Month calendar** | Every tracked day, lime under the limit and pink over, month by month. |
 | **Smart bedtime** | Scroll most late at night? Billy suggests a bedtime just before your peak. |
 | **Export** | All your days as a CSV file. |
+| **Delete my account** | One tap (and your password) erases your backups, friends, pokes and login. |
 
 ## Screens
 
@@ -118,7 +119,9 @@ your own receipt for reading the page.
 ReelBill watches four apps (Instagram, YouTube, Moj, Josh) and counts swipes in them.
 It never reads messages, captions, comments or anything you type. Counts are backed up
 to your account so a new phone keeps your streak; friends see only a weekly summary,
-and only after you've both accepted. Details in [How it works](docs/HOW-IT-WORKS.md#privacy).
+and only after you've both accepted. Signing out clears the phone, and *Delete my account*
+erases everything, login included. Details in [How it works](docs/HOW-IT-WORKS.md#privacy)
+and [Security](docs/HOW-IT-WORKS.md#security).
 
 ## How it works
 

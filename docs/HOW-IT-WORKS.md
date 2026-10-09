@@ -15,6 +15,8 @@ stamped. The source is private; this explains the design, not the code.
 - [Morning bill, widget and tile](#morning-bill-widget-and-tile)
 - [Billy's voices, calendar and export](#billys-voices-calendar-and-export)
 - [Privacy](#privacy)
+- [Security](#security)
+- [Battery](#battery)
 - [How it's tested](#how-its-tested)
 - [The website](#the-website)
 
@@ -182,7 +184,8 @@ people can't take the same one at once.
 | `pokes/{you}/inbox/{them}` | The latest poke from each friend: their name and which line | Only you |
 
 **Backup** is fire-and-forget: at most every 30 seconds the phone writes today, yesterday
-and the weekly summary; Firestore queues the writes offline. Signing in on a new phone
+and the weekly summary, skipping any document that hasn't changed since the last write;
+Firestore queues the writes offline. Signing in on a new phone
 brings back the last 90 days and *merges* them, keeping the larger figure for each
 count, so nothing counted locally before sign-in is lost.
 
@@ -204,7 +207,8 @@ sequenceDiagram
 write your own lists, except for exactly one entry in someone else's list (the one with
 your id), and only to drop in a request, accept one they sent you, or remove it. You
 can't accept your own request, plant entries for anyone else, claim a taken username,
-or read a profile before both sides have accepted. Friends never get access to each
+pass yourself off under someone else's @username, or read a profile before both sides
+have accepted. Friends never get access to each
 other's daily data.
 
 **Pokes** arrive without a push server. The accessibility service keeps ReelBill's
@@ -249,6 +253,39 @@ survives.
   and the weekly summary friends see. Stored in Cloud Firestore in Mumbai
   (`asia-south1`), behind the rules above.
 
+**Signing out and deleting.** Signing out uploads anything pending, then removes
+ReelBill's data from the phone, so the next person to sign in starts clean and nothing
+of yours merges into their backup. *Delete my account* asks for your password again,
+then erases your days, settings, profile, @username, both sides of every friendship,
+the pokes you sent and received, and finally the login itself.
+
+## Security
+
+- **Server-side rules, schema-checked.** Every document has a fixed shape: allowed
+  fields only, counts within sane bounds, names a sensible length, and timestamps set by
+  the server's clock. Wherever a @username appears, the rules check that it belongs to
+  the account it describes.
+- **Accounts.** Passwords need at least 8 characters, enforced by Firebase Auth as well
+  as the app. Email-enumeration protection is on, so sign-in errors don't reveal which
+  emails have accounts.
+- **A locked API key.** The app's Firebase key only works from the ReelBill app signed
+  with its release certificate, and only for the four Google APIs it actually uses.
+- **On the phone.** No cleartext network traffic is allowed, ReelBill's data is excluded
+  from Android cloud backups and device transfers, and shared bill images are cleared
+  from the cache after a day.
+- **The website** sends a strict Content Security Policy (its own files, GSAP's CDN and
+  Google Fonts only), refuses to be framed, and pins GSAP with integrity hashes so a
+  tampered copy on the CDN won't run. The APK's SHA-256 is printed under the download
+  button.
+- **CI** runs with a read-only token, and Dependabot keeps libraries and actions current.
+
+## Battery
+
+The counter only does work while a reels app is on screen. Its once-a-second check
+(for leaving the app, time in reels, and lock expiry) stops a few seconds after you
+leave and restarts on the next event from a tracked app. Widget refreshes are batched,
+and fonts are trimmed to the characters ReelBill uses, which keeps the APK under 3 MB.
+
 ## How it's tested
 
 - **Unit tests** (49) cover the reel detector (landing, index changes, swipe bursts,
@@ -257,13 +294,16 @@ survives.
   sticker rule, both voices and the bedtime suggestion.
 - **Security-rules tests** run the real rules on the Firestore emulator: private data,
   username claims, the full friend handshake, pokes and their hourly limit, and the
-  attacks above (21 cases).
+  the attacks above, including impersonating another @username and out-of-range data
+  (28 cases).
 - **End to end on an emulator**: a test-only "fake reels" app borrows Instagram's
   package name and viewer id, so the real service, detector, bubble, kick-out screen,
   locks, bedtime, the pause and notifications run exactly as they would on a phone.
   Verified: landing plus ten swipes counts exactly 11.
-- **Against the live backend**: temporary accounts sign up, send and accept a friend
-  request, back up, wipe the app and restore, then get deleted.
+- **Against the live backend**: temporary accounts sign up (a 7-character password is
+  refused), send and accept a friend request, back up, sign out (the phone is wiped),
+  sign back in and restore, then delete themselves; every document and the login are
+  checked gone afterwards.
 - **CI** runs the Android build, unit tests, lint and the rules suite on every push.
 
 ## The website

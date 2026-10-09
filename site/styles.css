@@ -379,3 +379,5 @@ a { color: inherit; }
   background: #050505; box-shadow: 0 0 12px rgba(198, 244, 50, .35);
 }
 .printer + .receipt { margin-top: 0; }
+
+.sha { word-break: break-all; opacity: .75; }

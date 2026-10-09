@@ -73,7 +73,15 @@
       setTimeout(() => { heroN = 0; heroCount.textContent = 0; setRing(heroRing, 0); heroBubble.classList.remove("over"); }, 1800);
     }
   }
-  if (!reduce) setInterval(heroTick, 1100); else { heroN = 42; heroCount.textContent = 42; setRing(heroRing, 0.42); }
+  // Loops run only while their section is on screen and the tab is visible.
+  const onScreen = new WeakMap();
+  const io = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => entries.forEach((e) => onScreen.set(e.target, e.isIntersecting)), { rootMargin: "100px" })
+    : null;
+  const watch = (el) => { onScreen.set(el, !io); io?.observe(el); return () => !document.hidden && onScreen.get(el); };
+  const heroLive = watch($(".hero"));
+  if (!reduce) setInterval(() => { if (heroLive()) heroTick(); }, 1100);
+  else { heroN = 42; heroCount.textContent = 42; setRing(heroRing, 0.42); }
 
   if (hasGsap && !reduce) {
     const intro = gsap.timeline({ defaults: { ease: "back.out(2.2)" } });
@@ -112,10 +120,16 @@
     tickerTweens.push(gsap.to(track, { xPercent: dir === 1 ? 0 : -50, duration: 40, ease: "none", repeat: -1 }));
   });
   if (hasGsap && !reduce) {
+    let settle;
+    let lastBoost = 1;
     ScrollTrigger.create({
       onUpdate: (self) => {
         const boost = 1 + Math.min(6, Math.abs(self.getVelocity()) / 300);
-        tickerTweens.forEach((t) => gsap.to(t, { timeScale: boost, duration: 0.2, overwrite: true, onComplete: () => gsap.to(t, { timeScale: 1, duration: 1 }) }));
+        if (Math.abs(boost - lastBoost) < 0.4) return;
+        lastBoost = boost;
+        tickerTweens.forEach((t) => gsap.to(t, { timeScale: boost, duration: 0.2, overwrite: true }));
+        clearTimeout(settle);
+        settle = setTimeout(() => { lastBoost = 1; tickerTweens.forEach((t) => gsap.to(t, { timeScale: 1, duration: 1, overwrite: true })); }, 250);
       },
     });
   }
@@ -124,7 +138,12 @@
   // SVGs are inlined (not <img>) so Billy's printed text uses the page's Fredoka and his
   // TOTAL can be rewritten.
   const poses = $$(".pose");
-  Promise.all($$("[data-svg]").map((el) => fetch(el.dataset.svg).then((r) => r.text()).then((svg) => {
+  const svgCache = new Map();
+  const getSvg = (url) => {
+    if (!svgCache.has(url)) svgCache.set(url, fetch(url).then((r) => r.text()));
+    return svgCache.get(url);
+  };
+  Promise.all($$("[data-svg]").map((el) => getSvg(el.dataset.svg).then((svg) => {
     el.innerHTML = svg;
     if (el.dataset.total) $$(".billy-total", el).forEach((t) => (t.textContent = el.dataset.total));
   }).catch(() => {}))).then(setupBilly);
@@ -280,8 +299,10 @@
     });
   }
   layoutBoard(false);
+  const boardLive = watch($(".friends"));
   if (!reduce) {
     setInterval(() => {
+      if (!boardLive()) return;
       // Everyone scrolls a bit; you scroll less (it's your ad, after all). New week: reset.
       if (people.some((p) => p.week > 700)) people.forEach((p) => Object.assign(p, p.start));
       people.forEach((p) => {
