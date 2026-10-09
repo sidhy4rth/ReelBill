@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml/badge.svg" alt="Android CI"></a>
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml/badge.svg" alt="Security rules CI"></a>
-  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.3.0-C6F432?labelColor=111111" alt="Release 0.3.0"></a>
+  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.3.1-C6F432?labelColor=111111" alt="Release 0.3.1"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/source-private-FF4FA3?labelColor=111111" alt="Source is private"></a>
 </p>
 
@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://reelbill-app.vercel.app">Website</a> ·
-  <a href="https://reelbill-app.vercel.app/ReelBill-0.3.0.apk">Android 0.3.0</a> ·
+  <a href="https://reelbill-app.vercel.app/ReelBill-0.3.1.apk">Android 0.3.1</a> ·
   <a href="docs/HOW-IT-WORKS.md">How it works</a>
 </p>
 
