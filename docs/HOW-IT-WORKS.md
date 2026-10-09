@@ -8,7 +8,9 @@ stamped. The source is private; this explains the design, not the code.
 - [The bubble](#the-bubble)
 - [Billy's moods and nudges](#billys-moods-and-nudges)
 - [Kick me out and Study lock](#kick-me-out-and-study-lock)
+- [Bedtime, pause and step-down](#bedtime-pause-and-step-down)
 - [Insights](#insights)
+- [Stickers and the weekly bill](#stickers-and-the-weekly-bill)
 - [Accounts, backup and friends](#accounts-backup-and-friends)
 - [Morning bill, widget and tile](#morning-bill-widget-and-tile)
 - [Privacy](#privacy)
@@ -113,6 +115,21 @@ reels underneath can't be swiped until you choose.
   *Close* and *Unlock early*.
 - Either screen leaves with you if you switch apps.
 
+## Bedtime, pause and step-down
+
+- **Bedtime** is a study lock that repeats every night: a start and end time (default
+  11 PM to 7 AM) that may wrap past midnight. During it, opening Reels puts Billy at the
+  door with *Close* and *Not tonight*. "Not tonight" is remembered against the night it
+  belongs to, so 1 AM still counts as the previous evening and the lock is back tomorrow.
+- **Pause before reels** (opt-in): arriving in a viewer brings up a breathing Billy. The
+  *Continue* button stays locked for five seconds; *Close* is available straight away.
+  It shows at most once every ten minutes, so scrolling back in after a message isn't
+  punished.
+- **Step-down plan** (opt-in): on Monday, if every tracked day of the past week (at least
+  five) ended under the limit, the limit drops about 10%, in fives, never below 20.
+- **Apps to track**: counting can be switched off per app; events from a switched-off
+  app are ignored before anything else happens.
+
 ## Insights
 
 - **Time in reels**: the service measures how long a viewer stays on screen and writes
@@ -123,6 +140,28 @@ reels underneath can't be swiped until you choose.
   break a streak until it's over.
 - **When you scroll**: reels per hour of day over the last week, peak hour highlighted.
 - **This week vs last**: percentage change in the 7-day total.
+
+## Stickers and the weekly bill
+
+A small rules engine runs whenever the app opens and with the morning alarm. It
+credits study locks that ran their full course (unlocking early forfeits it), issues the
+**weekly bill** once per finished Monday-to-Sunday week, applies the step-down plan, and
+awards **stickers**:
+
+| Sticker | Earned by |
+|---|---|
+| First bill | Finishing the measuring day |
+| Under budget | A finished day under the limit |
+| Hat trick / Full week | A 3- or 7-day streak |
+| Clean bill | A finished day with zero reels |
+| Kept the lock | A study lock that ran its full course |
+| Glow-up | A week at least 20% below the week before (both with 5+ tracked days) |
+| Squad | Your first accepted friend |
+| Receipts | Sharing your bill |
+
+New stickers pop up the next time the app opens, or arrive as a notification when the
+morning run earns them. Weekly reports only count days on or after the first full day
+after install, so a week you installed midway isn't judged on days with no data.
 
 ## Accounts, backup and friends
 
@@ -190,15 +229,18 @@ other's daily data.
 
 ## How it's tested
 
-- **Unit tests** cover the reel detector (landing, index changes, swipe bursts, nudges,
-  carousels, layout noise), mood thresholds, nudge thresholds, streaks, Day 1
-  suggestions, durations, locks and weekly comparison.
+- **Unit tests** (44) cover the reel detector (landing, index changes, swipe bursts,
+  carousels, layout noise), moods, nudges, streaks, Day 1 suggestions, durations, locks,
+  bedtime windows across midnight, the pause cooldown, step-down, weekly reports and
+  every sticker rule.
 - **Security-rules tests** run the real rules on the Firestore emulator: private data,
   username claims, the full friend handshake, and the attacks above (15 cases).
 - **End to end on an emulator**: a test-only "fake reels" app borrows Instagram's
   package name and viewer id, so the real service, detector, bubble, kick-out screen,
-  lock and notifications run exactly as they would on a phone. Verified: landing plus
-  ten swipes counts exactly 11.
+  locks, bedtime, the pause and notifications run exactly as they would on a phone.
+  Verified: landing plus ten swipes counts exactly 11.
+- **Against the live backend**: temporary accounts sign up, send and accept a friend
+  request, back up, wipe the app and restore, then get deleted.
 - **CI** runs the Android build, unit tests, lint and the rules suite on every push.
 
 ## The website

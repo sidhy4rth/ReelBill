@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml/badge.svg" alt="Android CI"></a>
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml/badge.svg" alt="Security rules CI"></a>
-  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.3.1-C6F432?labelColor=111111" alt="Release 0.3.1"></a>
+  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.4.0-C6F432?labelColor=111111" alt="Release 0.4.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/source-private-FF4FA3?labelColor=111111" alt="Source is private"></a>
 </p>
 
@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://reelbill-app.vercel.app">Website</a> ·
-  <a href="https://reelbill-app.vercel.app/ReelBill-0.3.1.apk">Android 0.3.1</a> ·
+  <a href="https://reelbill-app.vercel.app/ReelBill-0.4.0.apk">Android 0.4.0</a> ·
   <a href="docs/HOW-IT-WORKS.md">How it works</a>
 </p>
 
@@ -62,9 +62,15 @@ count, and a mascot who gets more dramatic the longer the day goes.
 | **Daily limit + nudges** | 100 by default. Billy checks in at half, three quarters, five left, the limit, and every ten over. |
 | **Kick me out** | Opt-in. At the limit a full-screen Billy covers the reels: close the app, or take five more. |
 | **Study lock** | 30m, 1h, 2h or till midnight. Opening Reels during a lock puts Billy at the door. |
+| **Bedtime mode** | Reels off every night, 11 PM to 7 AM or whatever you set. "Not tonight" skips one night. |
+| **Pause before reels** | Opt-in. A breathing Billy before Reels opens; Continue unlocks after five seconds. |
 | **Time in reels** | How long, not just how many. |
 | **Streaks and trends** | Days under the limit, this week vs last, and the hour you scroll most. |
 | **Morning bill** | Yesterday's total, around 9 AM. |
+| **Weekly bill** | Monday morning: last week's total, average, best and worst day, and the change. |
+| **Step-down plan** | Opt-in. A full week under your limit and Billy lowers it by about 10%. |
+| **Stickers** | Nine to collect: streaks, a zero-reel day, a kept lock, a 20% better week, and more. |
+| **Pick your apps** | Switch counting off for any of the four apps. |
 | **Share your bill** | Today's receipt as an image for the story or the group chat. |
 | **Widget + Quick Settings tile** | Billy on the home screen; one tap locks reels for an hour. |
 | **Cloud backup** | Counts and streaks survive a reinstall or a new phone. |
