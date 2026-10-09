@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/android.yml/badge.svg" alt="Android CI"></a>
   <a href="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml"><img src="https://github.com/sidhy4rth/ReelBill/actions/workflows/rules.yml/badge.svg" alt="Security rules CI"></a>
-  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.4.0-C6F432?labelColor=111111" alt="Release 0.4.0"></a>
+  <a href="https://reelbill-app.vercel.app"><img src="https://img.shields.io/badge/release-0.5.0-C6F432?labelColor=111111" alt="Release 0.5.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/source-private-FF4FA3?labelColor=111111" alt="Source is private"></a>
 </p>
 
@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://reelbill-app.vercel.app">Website</a> ·
-  <a href="https://reelbill-app.vercel.app/ReelBill-0.4.0.apk">Android 0.4.0</a> ·
+  <a href="https://reelbill-app.vercel.app/ReelBill-0.5.0.apk">Android 0.5.0</a> ·
   <a href="docs/HOW-IT-WORKS.md">How it works</a>
 </p>
 
@@ -75,6 +75,11 @@ count, and a mascot who gets more dramatic the longer the day goes.
 | **Widget + Quick Settings tile** | Billy on the home screen; one tap locks reels for an hour. |
 | **Cloud backup** | Counts and streaks survive a reinstall or a new phone. |
 | **Friends leaderboard** | Weekly ranking with people you've both agreed to compare with. |
+| **Poke a friend** | Send one of Billy's lines ("Go touch grass."). Arrives in seconds; once an hour per friend. |
+| **Hinglish Billy** | "Ye bill kaun bharega?!" Billy's lines, nudges and screens in Hinglish. |
+| **Month calendar** | Every tracked day, lime under the limit and pink over, month by month. |
+| **Smart bedtime** | Scroll most late at night? Billy suggests a bedtime just before your peak. |
+| **Export** | All your days as a CSV file. |
 
 ## Screens
 

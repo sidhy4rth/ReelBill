@@ -13,6 +13,7 @@ stamped. The source is private; this explains the design, not the code.
 - [Stickers and the weekly bill](#stickers-and-the-weekly-bill)
 - [Accounts, backup and friends](#accounts-backup-and-friends)
 - [Morning bill, widget and tile](#morning-bill-widget-and-tile)
+- [Billy's voices, calendar and export](#billys-voices-calendar-and-export)
 - [Privacy](#privacy)
 - [How it's tested](#how-its-tested)
 - [The website](#the-website)
@@ -178,6 +179,7 @@ people can't take the same one at once.
 | `usernames/{name}` | Which account owns a @username | Anyone signed in (so friends can find you) |
 | `profiles/{you}` | Name, @username, this week's total, today's total, streak | You, and friends you've accepted |
 | `friends/{you}/list/{them}` | `outgoing`, `incoming` or `accepted` | Only you |
+| `pokes/{you}/inbox/{them}` | The latest poke from each friend: their name and which line | Only you |
 
 **Backup** is fire-and-forget: at most every 30 seconds the phone writes today, yesterday
 and the weekly summary; Firestore queues the writes offline. Signing in on a new phone
@@ -205,6 +207,13 @@ can't accept your own request, plant entries for anyone else, claim a taken user
 or read a profile before both sides have accepted. Friends never get access to each
 other's daily data.
 
+**Pokes** arrive without a push server. The accessibility service keeps ReelBill's
+process alive, so a Firestore listener on your poke inbox turns a new poke into a local
+notification within seconds, even with the app closed. The rules only let accepted
+friends poke, as themselves, with the server's clock, and at most once an hour per
+friend. The inbox document is kept rather than deleted on delivery so the hourly limit
+survives.
+
 ## Morning bill, widget and tile
 
 - **Morning bill**: an inexact daily alarm around 9 AM posts yesterday's total, the
@@ -215,6 +224,19 @@ other's daily data.
   on every counted reel. The app can ask the launcher to pin it.
 - **Quick Settings tile**: shows today's count; a tap locks reels for an hour, another
   unlocks.
+
+## Billy's voices, calendar and export
+
+- **Voices**: every line Billy says (dashboard, nudges, kick-out, lock, bedtime and the
+  pause) lives in one table per voice. English and Hinglish today; the notification
+  thresholds are identical in both.
+- **Month calendar**: each tracked day as a circle, brighter lime the fewer reels,
+  pink at or over the limit, with month-by-month navigation back to install.
+- **Smart bedtime**: when the busiest hour of the last week is between 9 PM and 2 AM
+  (with at least three days of data), Billy suggests a bedtime from 30 minutes before
+  it until 7 AM.
+- **Export**: every tracked day (per app, total, minutes in reels) as CSV through the
+  share sheet.
 
 ## Privacy
 
@@ -229,12 +251,13 @@ other's daily data.
 
 ## How it's tested
 
-- **Unit tests** (44) cover the reel detector (landing, index changes, swipe bursts,
+- **Unit tests** (49) cover the reel detector (landing, index changes, swipe bursts,
   carousels, layout noise), moods, nudges, streaks, Day 1 suggestions, durations, locks,
-  bedtime windows across midnight, the pause cooldown, step-down, weekly reports and
-  every sticker rule.
+  bedtime windows across midnight, the pause cooldown, step-down, weekly reports, every
+  sticker rule, both voices and the bedtime suggestion.
 - **Security-rules tests** run the real rules on the Firestore emulator: private data,
-  username claims, the full friend handshake, and the attacks above (15 cases).
+  username claims, the full friend handshake, pokes and their hourly limit, and the
+  attacks above (21 cases).
 - **End to end on an emulator**: a test-only "fake reels" app borrows Instagram's
   package name and viewer id, so the real service, detector, bubble, kick-out screen,
   locks, bedtime, the pause and notifications run exactly as they would on a phone.
